@@ -1,0 +1,19 @@
+@import './skin.scss';
+@import '../widgets/common/depth.scss';
+
+pre[class*=language-] {
+
+  @extend .z-depth-1;
+
+  &>code {
+    border-left-color: $theme;
+    box-shadow: inherit;
+  }
+  &:before, &:after {
+    box-shadow: inherit;
+  }
+}
+
+.code-gh-link {
+  margin-top: -10px;
+}

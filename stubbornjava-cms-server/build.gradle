@@ -1,0 +1,10 @@
+dependencies {
+    // Project reference
+    api project(':stubbornjava-undertow')
+    api project(':stubbornjava-common')
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+
+    testImplementation libs.junit
+}

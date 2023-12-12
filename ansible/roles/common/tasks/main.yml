@@ -1,0 +1,18 @@
+---
+- name: EPEL
+  yum: name=epel-release state=present
+
+- name: New York Time Zone
+  file: src=/usr/share/zoneinfo/America/New_York dest=/etc/localtime owner=root group=root state=link force=true
+
+- cron:
+    name: "install security updates"
+    cron_file: security_update
+    special_time: daily
+    user: root
+    job: "yum update -y --security --quiet"
+
+- name: install git
+  package:
+    name: "git"
+    state: installed

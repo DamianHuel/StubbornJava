@@ -1,0 +1,17 @@
+// {{start:dependencies}}
+
+dependencies {
+    // Project reference
+    api project(':stubbornjava-undertow')
+    api project(':stubbornjava-common')
+    api project(':stubbornjava-cms-server')
+
+    api libs.romeRss
+    
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+
+    testImplementation libs.junit
+}
+
+// {{end:dependencies}}

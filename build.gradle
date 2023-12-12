@@ -1,0 +1,92 @@
+// {{start:build}}
+plugins {
+  id "org.sonarqube" version "3.3"
+}
+
+// Include a gradle script that has all of our dependencies split out.
+apply from: "gradle/dependencies.gradle"
+
+allprojects {
+    // Apply the java plugin to add support for Java
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven-publish'
+
+    // Using Jitpack so I need the repo name in the group to match.
+    group = 'com.stubbornjava.StubbornJava'
+    version = '0.0.0-SNAPSHOT'
+    
+    sourceCompatibility = 15
+    targetCompatibility = 15
+
+    sourceSets {
+        main {
+            java {
+                srcDirs = ["src/main/java", "src/generated/java"]
+            }
+            resources {
+                srcDirs = ["src/main/resources", "ui/assets"]
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'https://jitpack.io' } // This allows us to use jitpack projects
+    }
+    
+    task copyRuntimeLibs(type: Copy) {
+        into "build/libs"
+        from configurations.runtimeClasspath
+    }
+    
+    build.finalizedBy(copyRuntimeLibs)
+
+    configurations.all {
+        resolutionStrategy {
+            // fail eagerly on version conflict (includes transitive dependencies)
+            // e.g. multiple different versions of the same dependency (group and name are equal)
+            failOnVersionConflict()
+
+            // Auto force all of our explicit dependencies.
+            libs.each { k, v -> force(v) }
+            force('commons-logging:commons-logging:1.2')
+            force('com.google.code.findbugs:jsr305:3.0.2')
+
+            // cache dynamic versions for 10 minutes
+            cacheDynamicVersionsFor 10*60, 'seconds'
+            // don't cache changing modules at all
+            cacheChangingModulesFor 0, 'seconds'
+        }
+    }
+
+    // Maven Publish Begin
+    task sourceJar(type: Jar) {
+        from sourceSets.main.allJava
+    }
+
+    // This publishes sources with our jars.
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                artifact sourceJar {
+                    classifier "sources"
+                }
+            }
+        }
+    }
+    
+    sonarqube {
+        properties {
+            property "sonar.projectKey", "StubbornJava_StubbornJava"
+            property "sonar.organization", "stubbornjava"
+            property "sonar.host.url", "https://sonarcloud.io"
+            property "sonar.exclusions", "**/src/generated/java/**/*.java"
+        }
+    }
+    // Maven Publish End
+}
+// {{end:build}}

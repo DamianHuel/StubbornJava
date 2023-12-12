@@ -1,0 +1,90 @@
+@import '../../common/skin.scss';
+@import '../common/depth.scss';
+
+.navbar-inverse {
+  background-color: $theme;
+  //flex-direction: row;
+
+  .navbar-brand {
+    padding: 0;
+    color: $white;
+  }
+
+  .java {
+    color: $gold;
+  }
+
+  // .filler {
+  //   display: flex;
+  //   width: 100%;
+  // }
+
+  .navbar-nav {
+    .nav-link {
+      color: $white;
+    }
+  }
+
+  .header-social {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    a {
+      font-size: 2rem;
+      margin-left: 0.7rem;
+      color: $gold;
+      :hover {
+        color: darken($gold, 20%);
+      }
+    }
+  }
+
+  .followus {
+    color: $white;
+    white-space: nowrap;
+    padding: 3px 8px;
+    text-align: center;
+    background-color: $black;
+    border-radius: .25rem;
+    @extend .z-depth-1;
+
+    &:after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      top: 50%;
+      margin-top: -5px;
+      margin-left: 8px;
+      content: "";
+      border-width: 5px 0 5px 5px;
+      border-left-color: $black;
+    }
+  }
+
+  @extend .z-depth-1;
+  // a {
+  //   padding: 10px 15px;
+  //   font-size: 13px;
+  //   line-height: 28px;
+  //   color: #fff;
+  //   font-weight: 600;
+
+  //   &:hover, &:focus {
+  //     background-color: inherit;
+  //   }
+  // }
+
+  // .nav li a:hover {
+  //   background-color: inherit;
+  // }
+
+  // .navbar-toggle {
+  //   border-color: #fff;
+  //   .icon-bar {
+  //     background-color: #fff;
+  //   }
+  // }
+
+}

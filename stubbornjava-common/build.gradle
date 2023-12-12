@@ -1,0 +1,55 @@
+// {{start:dependencies}}
+dependencies {
+    // Project reference
+    api project(':stubbornjava-undertow')
+    api libs.slf4j
+    api libs.logback
+    api libs.logbackJson
+    api libs.logbackJackson
+    api libs.jacksonCore
+    api libs.jacksonDatabind
+    api libs.jacksonDatabind
+    api libs.jacksonAnnotations
+    api libs.jacksonDatatypeJdk8
+    api libs.jacksonDatatypeJsr310
+    api libs.jacksonDataformatCsv
+    api libs.jacksonDataFormatCbor
+    api libs.metricsCore
+    api libs.metricsJvm
+    api libs.metricsJson
+    api libs.metricsLogback
+    api libs.metricsHealthchecks
+    api libs.metricsGraphite
+    api libs.guava
+    api libs.typesafeConfig
+    api libs.handlebars
+    api libs.handlebarsJackson
+    api libs.handlebarsMarkdown
+    api libs.handlebarsHelpers
+    api libs.handlebarsHumanize
+    api libs.htmlCompressor
+    api libs.hikaricp
+    api libs.jool
+    api libs.okhttp
+    api libs.okhttpUrlConnection
+    api libs.loggingInterceptor
+    api libs.s3
+    api libs.failsafe
+    api libs.jsoup
+    api libs.sitemapgen4j
+    api libs.jbcrypt
+    api libs.jooq
+    api libs.jooqCodegen
+    api libs.flyway
+    api libs.connectorj
+    api libs.javaxAnnotation
+    api libs.commonsCodec
+    api libs.kotlin
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+
+    testImplementation libs.junit
+    testImplementation libs.hsqldb
+}
+// {{end:dependencies}}

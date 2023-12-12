@@ -1,0 +1,10 @@
+// {{start:settings}}
+rootProject.name = 'stubbornjava-parent'
+
+include ':stubbornjava-undertow'
+include ':stubbornjava-common'
+include ':stubbornjava-examples'
+include ':stubbornjava-webapp'
+include ':stubbornjava-cms-server'
+
+// {{end:settings}}

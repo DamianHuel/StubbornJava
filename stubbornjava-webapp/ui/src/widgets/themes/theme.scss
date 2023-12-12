@@ -1,0 +1,26 @@
+@import '../../common/skin.scss';
+
+.theme-row {
+  margin-top: 0.7rem;
+  a {
+    color: $gray-light;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.theme-container {
+  margin-bottom: 0.7rem;
+}
+
+.theme {
+  .theme-thumbnail {
+    border-bottom: 1px solid #f7f7f7;
+  }
+  &.card {
+    padding: 0;
+    height: 100%;
+  }
+}
